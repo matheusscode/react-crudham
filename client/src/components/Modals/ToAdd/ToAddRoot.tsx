@@ -17,12 +17,14 @@ interface ToAddRootProps {
   children: ReactNode;
   title: string;
   buttonText: string;
+  event: () => void;
 }
 
 export default function ToAddRoot({
   title,
   buttonText,
   children,
+  event,
 }: ToAddRootProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -50,7 +52,13 @@ export default function ToAddRoot({
             </Flex>
           </ModalBody>
           <ModalFooter>
-            <Button w="100%" color="#ffffff" bgColor="#408080" p="1rem">
+            <Button
+              w="100%"
+              color="#ffffff"
+              bgColor="#408080"
+              p="1rem"
+              onClick={event}
+            >
               Buscar
             </Button>
           </ModalFooter>

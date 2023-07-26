@@ -17,6 +17,7 @@ import { NavLink } from "react-router-dom";
 import { Icon } from "@chakra-ui/icons";
 import type { TableProps } from "../../../types";
 import Description from "../../../components/Modals/Description";
+import { useTable } from "../../../context/TableContext";
 
 const tableThreads = [
   {
@@ -54,13 +55,19 @@ const tableThreads = [
 ];
 
 export default function TableContent({ dataTable }: TableProps) {
+  const { handleDeleteApplication } = useTable();
+
+  const onDelete = (applicationId: string) => {
+    handleDeleteApplication(applicationId);
+  };
+
   return (
     <TableContainer
       w="100%"
       boxShadow="0 0 3px rgba(0,0,0,0.3)"
       borderRadius="12px"
       minH="400px"
-      maxH="500px" // Definindo a altura máxima para 500px
+      maxH="500px"
       overflowY="scroll"
     >
       <Table variant="simple">
@@ -108,7 +115,7 @@ export default function TableContent({ dataTable }: TableProps) {
                   {data.DT_ATUALIZACAO}
                 </Td>
                 <Td display="flex" gap="1rem">
-                  <Button>
+                  <Button onClick={() => onDelete(data.CD_APLICACAO)}>
                     <Icon as={BsTrash3} />
                   </Button>
                   <Button>

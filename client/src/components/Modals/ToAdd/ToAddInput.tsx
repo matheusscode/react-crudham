@@ -1,30 +1,41 @@
 import { Input } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { InputKey } from "../../../types";
 
 interface ToAddInputProps {
   placeholder: string;
   type: string;
-  state?: string;
-  setState?: Dispatch<SetStateAction<string>>;
+  name: keyof InputKey;
+  inputState: InputKey;
+  setInputState: Dispatch<SetStateAction<InputKey>>;
 }
 
 export default function ToAddInput({
   placeholder,
-  setState,
-  state,
   type,
+  inputState,
+  name,
+  setInputState,
 }: ToAddInputProps) {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setInputState((prevInputState) => ({
+      ...prevInputState,
+      [name]: value,
+    }));
+  };
+
   return (
     <Input
       placeholder={placeholder}
       type={type}
-      value={state}
       h="34px"
       p="1rem 0.2rem"
       borderBottom="2px solid #c0c0c0"
       variant="flushed"
       fontSize="0.9rem"
-      onChange={(e) => setState(e.target.value)}
+      value={inputState[name]}
+      onChange={handleInputChange}
     />
   );
 }

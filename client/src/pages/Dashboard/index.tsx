@@ -18,12 +18,12 @@ import FilterContent from "./FilterContent";
 import AddContent from "./AddContent";
 import TableContent from "./TableContent";
 import type { OrderData } from "../../types";
+import { useTable } from "../../context/TableContext";
 
 export default function Dashboard() {
   const [isLargerThan700] = useMediaQuery("(max-width: 700px)");
 
-  const { data: dataTable, isFetching } =
-    useFetch<OrderData[]>("/applications");
+  const { dataFetching, dataTable } = useTable();
 
   return (
     <Flex
@@ -36,7 +36,7 @@ export default function Dashboard() {
       w="100%"
     >
       <Header />
-      {isFetching && (
+      {dataFetching && (
         <Box
           position="absolute"
           top="50%"
@@ -87,8 +87,7 @@ export default function Dashboard() {
 
       {dataTable !== null && <TableContent dataTable={dataTable} />}
 
-
-      <Text fontSize="0.9rem"  textAlign="center" mt="5rem">
+      <Text fontSize="0.9rem" textAlign="center" mt="5rem">
         Hospital Adventista de Manaus©
       </Text>
     </Flex>
