@@ -12,18 +12,16 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Icon } from "@chakra-ui/react";
-import useFetch from "../../hooks/useFetch";
 import Header from "../../components/Header";
 import FilterContent from "./FilterContent";
 import AddContent from "./AddContent";
 import TableContent from "./TableContent";
-import type { OrderData } from "../../types";
 import { useTable } from "../../context/TableContext";
 
 export default function Dashboard() {
   const [isLargerThan700] = useMediaQuery("(max-width: 700px)");
 
-  const { dataFetching, dataTable } = useTable();
+  const { dataFetching } = useTable();
 
   return (
     <Flex
@@ -85,7 +83,7 @@ export default function Dashboard() {
         </Text>
       </Flex>
 
-      {dataTable !== null && <TableContent dataTable={dataTable} />}
+      <TableContent />
 
       <Text fontSize="0.9rem" textAlign="center" mt="5rem">
         Hospital Adventista de Manaus©

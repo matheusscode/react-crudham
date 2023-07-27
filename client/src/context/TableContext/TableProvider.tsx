@@ -1,4 +1,4 @@
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, useEffect } from "react";
 import { TableContext } from "./TableCreate";
 import { api } from "../../services/api";
 import useFetch from "../../hooks/useFetch";
@@ -9,12 +9,15 @@ interface TableProviderProps {
 }
 
 export default function TableProvider({ children }: TableProviderProps) {
-  const { data: dataTable, isFetching: dataFetching } =
-    useFetch<OrderData[]>("/applications");
+  const {
+    data: dataTable,
+    isFetching: dataFetching,
+    setData: setDataTable,
+  } = useFetch<OrderData[]>("/applications");
 
   const handleAddApplication = async (applicationData: OrderData) => {
     try {
-      const response = await api.post("/add-application/", applicationData);
+      const response = await api.post(`/add-application`, applicationData);
       console.log("Application added:", response.data);
     } catch (error) {
       console.error("Error adding application:", error);

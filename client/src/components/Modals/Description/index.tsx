@@ -10,7 +10,6 @@ import {
   useDisclosure,
   Text,
 } from "@chakra-ui/react";
-import { ReactNode } from "react";
 
 interface DescriptionProps {
   content: string;

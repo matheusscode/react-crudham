@@ -12,20 +12,24 @@ import {
   Flex,
   ModalFooter,
 } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/icons";
+import { IconType } from "react-icons";
 
-interface ToAddRootProps {
+interface EditRootProps {
   children: ReactNode;
   title: string;
-  buttonText: string;
+  buttonText?: string;
+  icon?: IconType;
   event: () => void;
 }
 
-export default function ToAddRoot({
+export default function EditRoot({
   title,
   buttonText,
   children,
   event,
-}: ToAddRootProps) {
+  icon,
+}: EditRootProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleClick = () => {
@@ -35,8 +39,8 @@ export default function ToAddRoot({
 
   return (
     <>
-      <Button onClick={onOpen} w="100%" color="#ffffff" bgColor="#408080">
-        {buttonText}
+      <Button onClick={onOpen}>
+        {buttonText} <Icon as={icon} />
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>

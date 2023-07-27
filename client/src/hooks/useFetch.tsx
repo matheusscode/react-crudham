@@ -22,7 +22,7 @@ export default function useFetch<T = unknown>(
       .finally(() => {
         setIsFetching(false);
       });
-  }, []);
+  }, [data]);
 
-  return { data, isFetching, error };
+  return { data, setData, isFetching, error };
 }

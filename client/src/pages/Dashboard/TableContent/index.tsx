@@ -11,13 +11,12 @@ import {
   Button,
   Link,
 } from "@chakra-ui/react";
-import { BiPencil } from "react-icons/bi";
 import { BsTrash3 } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { Icon } from "@chakra-ui/icons";
-import type { TableProps } from "../../../types";
 import Description from "../../../components/Modals/Description";
 import { useTable } from "../../../context/TableContext";
+import EditContent from "../EditContent";
 
 const tableThreads = [
   {
@@ -54,8 +53,8 @@ const tableThreads = [
   },
 ];
 
-export default function TableContent({ dataTable }: TableProps) {
-  const { handleDeleteApplication } = useTable();
+export default function TableContent() {
+  const { handleDeleteApplication, dataTable } = useTable();
 
   const onDelete = (applicationId: string) => {
     handleDeleteApplication(applicationId);
@@ -82,8 +81,8 @@ export default function TableContent({ dataTable }: TableProps) {
         </Thead>
         <Tbody>
           {dataTable &&
-            dataTable.map((data) => (
-              <Tr key={data.CD_APLICACAO}>
+            dataTable.map((data, index) => (
+              <Tr key={index}>
                 <Td maxW="200px" fontSize="0.8rem">
                   {data.CD_APLICACAO}
                 </Td>
@@ -115,12 +114,14 @@ export default function TableContent({ dataTable }: TableProps) {
                   {data.DT_ATUALIZACAO}
                 </Td>
                 <Td display="flex" gap="1rem">
-                  <Button onClick={() => onDelete(data.CD_APLICACAO)}>
+                  <Button
+                    onClick={() =>
+                      data.CD_APLICACAO && onDelete(data.CD_APLICACAO)
+                    }
+                  >
                     <Icon as={BsTrash3} />
                   </Button>
-                  <Button>
-                    <Icon as={BiPencil} />
-                  </Button>
+                  <EditContent />
                 </Td>
               </Tr>
             ))}

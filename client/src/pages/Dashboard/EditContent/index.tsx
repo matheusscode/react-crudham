@@ -1,4 +1,4 @@
-import { ToAdd } from "../../../components/Modals/ToAdd";
+import { Edit } from "../../../components/Modals/Edit";
 
 import { AiOutlineFieldNumber } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
@@ -7,10 +7,11 @@ import { AiOutlineAppstore } from "react-icons/ai";
 import { MdOutlineLibraryBooks } from "react-icons/md";
 import { AiOutlineLink } from "react-icons/ai";
 import { useTable } from "../../../context/TableContext";
-import { useState, ChangeEvent } from "react";
+import { useState } from "react";
 import { InputKey, OrderData } from "../../../types";
+import { BiPencil } from "react-icons/bi";
 
-export default function AddContent() {
+export default function EditContent() {
   const { handleAddApplication } = useTable();
 
   const [inputValue, setInputValue] = useState<InputKey>({
@@ -48,10 +49,10 @@ export default function AddContent() {
   };
 
   return (
-    <ToAdd.Root buttonText="Adicionar" title="Adicionar" event={onSubmit}>
-      <ToAdd.Content>
-        <ToAdd.Icon icon={AiOutlineAppstore} />
-        <ToAdd.Input
+    <Edit.Root icon={BiPencil} title="Editar" event={onSubmit}>
+      <Edit.Content>
+        <Edit.Icon icon={AiOutlineAppstore} />
+        <Edit.Input
           name="applicationName"
           inputState={inputValue}
           setInputState={setInputValue}
@@ -62,10 +63,10 @@ export default function AddContent() {
         {/* 
       <Filter.Message color="red" size="0.8rem" text=" Número da aplicação não encontrada" />
     */}
-      </ToAdd.Content>
-      <ToAdd.Content>
-        <ToAdd.Icon icon={MdOutlineLibraryBooks} />
-        <ToAdd.Input
+      </Edit.Content>
+      <Edit.Content>
+        <Edit.Icon icon={MdOutlineLibraryBooks} />
+        <Edit.Input
           name="applicationDescription"
           inputState={inputValue}
           setInputState={setInputValue}
@@ -76,10 +77,10 @@ export default function AddContent() {
         {/* 
       <Filter.Message color="red" size="0.8rem" text=" Número da aplicação não encontrada" />
     */}
-      </ToAdd.Content>
-      <ToAdd.Content>
-        <ToAdd.Icon icon={AiOutlineUser} />
-        <ToAdd.Input
+      </Edit.Content>
+      <Edit.Content>
+        <Edit.Icon icon={AiOutlineUser} />
+        <Edit.Input
           name="responsible"
           inputState={inputValue}
           setInputState={setInputValue}
@@ -90,10 +91,10 @@ export default function AddContent() {
         {/* 
       <Filter.Message color="red" size="0.8rem" text=" Número da aplicação não encontrada" />
     */}
-      </ToAdd.Content>
-      <ToAdd.Content>
-        <ToAdd.Icon icon={BsCodeSlash} />
-        <ToAdd.Input
+      </Edit.Content>
+      <Edit.Content>
+        <Edit.Icon icon={BsCodeSlash} />
+        <Edit.Input
           name="technologie"
           inputState={inputValue}
           setInputState={setInputValue}
@@ -104,10 +105,10 @@ export default function AddContent() {
         {/* 
       <Filter.Message color="red" size="0.8rem" text=" Número da aplicação não encontrada" />
     */}
-      </ToAdd.Content>
-      <ToAdd.Content>
-        <ToAdd.Icon icon={AiOutlineLink} />
-        <ToAdd.Input
+      </Edit.Content>
+      <Edit.Content>
+        <Edit.Icon icon={AiOutlineLink} />
+        <Edit.Input
           name="acessLink"
           inputState={inputValue}
           setInputState={setInputValue}
@@ -118,7 +119,7 @@ export default function AddContent() {
         {/* 
       <Filter.Message color="red" size="0.8rem" text=" Número da aplicação não encontrada" />
     */}
-      </ToAdd.Content>
-    </ToAdd.Root>
+      </Edit.Content>
+    </Edit.Root>
   );
 }
