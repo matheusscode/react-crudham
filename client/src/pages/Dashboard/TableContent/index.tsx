@@ -20,6 +20,7 @@ import EditContent from "../EditContent";
 import { useState } from "react";
 import Tecnologies from "../../../components/Modals/Tecnologies";
 import type { OrderData } from "../../../types";
+import { convertDateTime } from "../../../utils/dateFormatter";
 
 const tableThreads = [
   {
@@ -119,10 +120,10 @@ export default function TableContent() {
                   </Link>
                 </Td>
                 <Td fontWeight={600} maxW="200px" fontSize="0.8rem">
-                  {data.DT_ATUALIZACAO}
+                  {data.DT_CRIACAO && convertDateTime(data.DT_CRIACAO)}
                 </Td>
                 <Td fontWeight={600} maxW="200px" fontSize="0.8rem">
-                  {data.DT_ATUALIZACAO}
+                  {data.DT_ATUALIZACAO && convertDateTime(data.DT_ATUALIZACAO)}
                 </Td>
                 <Td display="flex" gap="1rem">
                   <Button
