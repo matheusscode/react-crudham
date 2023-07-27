@@ -17,6 +17,9 @@ import { Icon } from "@chakra-ui/icons";
 import Description from "../../../components/Modals/Description";
 import { useTable } from "../../../context/TableContext";
 import EditContent from "../EditContent";
+import { useState } from "react";
+import Tecnologies from "../../../components/Modals/Tecnologies";
+import type { OrderData } from "../../../types";
 
 const tableThreads = [
   {
@@ -25,19 +28,19 @@ const tableThreads = [
   },
   {
     id: 2,
-    name: "NOME DA APLICAÇÃO",
+    name: "NOME",
   },
   {
     id: 3,
-    name: "DESCRIÇÃO DA APLICAÇÃO",
+    name: "DESCRIÇÃO",
   },
   {
     id: 4,
-    name: "NOME DO RESPONSÁVEL",
+    name: "RESPONSÁVEL",
   },
   {
     id: 5,
-    name: "NOME DA TECNOLOGIA",
+    name: "TECNOLOGIAS",
   },
   {
     id: 6,
@@ -50,6 +53,10 @@ const tableThreads = [
   {
     id: 8,
     name: "DATA DE ATUALIZAÇÃO",
+  },
+  {
+    id: 9,
+    name: "AÇÕES",
   },
 ];
 
@@ -83,34 +90,38 @@ export default function TableContent() {
           {dataTable &&
             dataTable.map((data, index) => (
               <Tr key={index}>
-                <Td maxW="200px" fontSize="0.8rem">
+                <Td fontWeight={600} maxW="200px" fontSize="0.8rem">
                   {data.CD_APLICACAO}
                 </Td>
-                <Td maxW="200px" fontSize="0.8rem">
+                <Td fontWeight={600} maxW="200px" fontSize="0.8rem">
                   {data.NM_APLICACAO}
                 </Td>
-                <Td maxW="200px" fontSize="0.8rem">
+                <Td fontWeight={600} maxW="200px" fontSize="0.8rem">
                   <Description
                     buttonText="Ver descrição"
                     title={data.NM_APLICACAO}
                     content={data.DS_APLICACAO}
                   />
                 </Td>
-                <Td maxW="200px" fontSize="0.8rem">
+                <Td fontWeight={600} maxW="200px" fontSize="0.8rem">
                   {data.NM_RESPONSAVEL}
                 </Td>
-                <Td maxW="200px" fontSize="0.8rem">
-                  {data.NM_TECNOLOGIA}
+                <Td fontWeight={600} maxW="200px" fontSize="0.8rem">
+                  <Tecnologies
+                    buttonText="Ver tecnologias"
+                    title="Tecnologias"
+                    content={data.DS_TECNOLOGIAS}
+                  />
                 </Td>
-                <Td maxW="200px" fontSize="0.8rem">
+                <Td fontWeight={600} maxW="200px" fontSize="0.8rem">
                   <Link as={NavLink} to={`http://${data.DS_LINK_ACESSO}`}>
                     {data.DS_LINK_ACESSO}
                   </Link>
                 </Td>
-                <Td maxW="200px" fontSize="0.8rem">
+                <Td fontWeight={600} maxW="200px" fontSize="0.8rem">
                   {data.DT_ATUALIZACAO}
                 </Td>
-                <Td maxW="200px" fontSize="0.8rem">
+                <Td fontWeight={600} maxW="200px" fontSize="0.8rem">
                   {data.DT_ATUALIZACAO}
                 </Td>
                 <Td display="flex" gap="1rem">

@@ -28,7 +28,7 @@ export default function EditContent() {
         NM_APLICACAO: inputValue.applicationName,
         DS_APLICACAO: inputValue.applicationDescription,
         NM_RESPONSAVEL: inputValue.responsible,
-        NM_TECNOLOGIA: inputValue.technologie,
+        DS_TECNOLOGIAS: inputValue.technologie,
         DS_LINK_ACESSO: inputValue.acessLink,
       };
 

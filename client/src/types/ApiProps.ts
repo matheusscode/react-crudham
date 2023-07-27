@@ -6,5 +6,5 @@ export type OrderData = {
   DT_CRIACAO?: string;
   NM_APLICACAO: string;
   NM_RESPONSAVEL: string;
-  NM_TECNOLOGIA: string;
+  DS_TECNOLOGIAS: string;
 };

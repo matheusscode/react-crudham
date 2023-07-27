@@ -17,7 +17,7 @@ export default function AddContent() {
     applicationName: "",
     applicationDescription: "",
     responsible: "",
-    technologie: "",
+    technologies: "",
     acessLink: "",
   });
 
@@ -27,7 +27,7 @@ export default function AddContent() {
         NM_APLICACAO: inputValue.applicationName,
         DS_APLICACAO: inputValue.applicationDescription,
         NM_RESPONSAVEL: inputValue.responsible,
-        NM_TECNOLOGIA: inputValue.technologie,
+        DS_TECNOLOGIAS: inputValue.technologies,
         DS_LINK_ACESSO: inputValue.acessLink,
       };
 
@@ -37,7 +37,7 @@ export default function AddContent() {
         applicationName: "",
         applicationDescription: "",
         responsible: "",
-        technologie: "",
+        technologies: "",
         acessLink: "",
       });
 
@@ -94,7 +94,7 @@ export default function AddContent() {
       <ToAdd.Content>
         <ToAdd.Icon icon={BsCodeSlash} />
         <ToAdd.Input
-          name="technologie"
+          name="technologies"
           inputState={inputValue}
           setInputState={setInputValue}
           placeholder="Nome da Tecnologia"

@@ -11,22 +11,23 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-interface DescriptionProps {
+interface TecnologiesProps {
   content: string;
   buttonText: string;
   title: string;
 }
 
-export default function Description({
+export default function Tecnologies({
   content,
   buttonText,
   title,
-}: DescriptionProps) {
+}: TecnologiesProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Button
         onClick={onOpen}
+        textAlign="left"
         p="0"
         _hover={{ bgColor: "transparent" }}
         bgColor="transparent"
